@@ -2,7 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+# alembic
+alembic/
+alembic.ini
 # C extensions
 *.so
 
