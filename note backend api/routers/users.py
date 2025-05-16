@@ -45,9 +45,9 @@ async def create_user(user: UserSignUpSchema, db: Session = Depends(get_db)):
     '''
     try:
         new_user = create_user_db(user,db)
-        return JSONResponse(content = jsonable_encoder(new_user),status_code =status.HTTP_201_CREATED)
+        return JSONResponse(content = jsonable_encoder({"message": "User created successfully"}),status_code =status.HTTP_201_CREATED)
     except  ValueError as e:
-        raise HTTPException(status_code=status.HTTP_406_NOT_ACCEPTABLE, detail=f'{e}')
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=f'{e}')
     
     
 @router.put('/')

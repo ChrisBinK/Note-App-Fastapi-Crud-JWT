@@ -26,7 +26,7 @@ def create_user_db(user:UserSignUpSchema, db:Session):
    
     existing_user = get_user_by_field(UserModel.email, user.email, db)
     if existing_user:
-        raise ValueError('User already exists.')
+        raise ValueError('User email already exists.')
     hash_password = get_password_hash(user.password)
     new_user = UserModel(first_name = user.first_name,last_name = user.last_name,
                 gender= user.gender,password = hash_password, email = user.email, role_id = int(env('USER_ROLE_ID')))
